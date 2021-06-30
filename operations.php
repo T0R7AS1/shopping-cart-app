@@ -66,7 +66,7 @@
                 if ($data['identifier'] == $product['identifier']) {
 
                     //remove
-                    if ($data['quantity'] <= 0) {
+                    if ($data['quantity'] < 0) {
                         array_splice($products, $key, 1);
                         cartsTotal($products);
                         file_put_contents(__DIR__.'/products.json', json_encode($products));
@@ -86,7 +86,7 @@
 
 
         //clear unnecessary data
-        if ($data['quantity'] <= 0) {
+        if ($data['quantity'] < 0) {
             array_splice($data, 1);
             cartsTotal($products);
             return;
